@@ -117,6 +117,12 @@ header h1 {
     font-size: 1.5rem;
 }
 
+h1 a {
+  text-decoration: none; /* 下線を消す */
+  color: inherit; /* 親要素の色を継承（自然な文字色にする） */
+}
+
+
 header nav ul {
     list-style: none;
     padding: 0;
@@ -151,6 +157,8 @@ header nav ul li a:hover {
     opacity: 0; /* 初期状態で透明 */
     transform: translateY(50px); /* 少し下から出てくるように */
     transition: opacity 1s ease, transform 1s ease; /* フェードイン＆スライドイン */
+    overflow: hidden; /* 不要なはみ出しを隠す */
+    object-position: center; /* 画像を中央に配置 */
   }
   
 
@@ -160,17 +168,6 @@ header nav ul li a:hover {
     transform: translateY(0) !important;
     transition: opacity 2s ease, transform 2s ease; /* ここでアニメーションの遅さを指定 */
   }
-  
-  
-  
-  /* 画像の上に重ねるテキスト */
-  .topImg {
-    position: relative; /* テキストを画像の上に重ねるため */
-    width: 100%; /* 幅を画面全体に */
-    height: 100vh; /* 高さを画面全体に (Full HDに近い高さ) */
-    overflow: hidden; /* 不要なはみ出しを隠す */
-    object-position: center; /* 画像を中央に配置 */
-}
 
 .topImg img {
     width: 100%; /* 横幅を画面全体にフィット */
@@ -206,9 +203,6 @@ header nav ul li a:hover {
     font-style: normal;
 }
 
-
-
-
 .heroWomanImg img {
     width: 300px;
     height: 300px;
@@ -234,6 +228,72 @@ header nav ul li a:hover {
     font-size: 1.2rem;
     margin: 0; /* h2とpタグのデフォルトのマージンをリセット */
 }
+
+
+
+.featureSection {
+  padding: 20px;
+}
+
+.feature {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 30px; /* 各段の間に余白 */
+  padding: 20px;
+}
+
+.featureImage {
+  flex-shrink: 0;
+  width: 40%; /* 画像の横幅を指定 */
+}
+
+.featureImage img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.featureText {
+  flex-grow: 1;
+  text-align: left;
+  padding: 20px;
+}
+
+.featureText h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+  font-family: "DotGothic16", serif;
+  font-weight: 400;
+  font-style: normal;
+  font-weight: bold;
+}
+
+.featureText p {
+  font-size: 16px;
+  line-height: 1.6;
+  padding: 10px;
+  font-family: "DotGothic16", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+@media (max-width: 768px) {
+  .feature {
+    flex-direction: column; /* スマホ時に縦並びに変更 */
+    text-align: center; /* 中央寄せにする */
+  }
+
+  .featureImage {
+    width: 100%; /* 画像の幅を100%に変更 */
+    margin-bottom: 15px; /* 画像下に余白 */
+  }
+
+  .featureText {
+    width: 100%; /* テキストの幅も100%に変更 */
+  }
+}
+
 
 
 
@@ -279,6 +339,8 @@ header nav ul li a:hover {
     gap: 20px;
     justify-content: center;
     margin-top: 30px;
+    list-style: none; /* 箇条書きのマーカー(::marker)を非表示にする */
+    padding: 0; /* 必要に応じてデフォルトの余白を削除 */
   }
   
   .services__item {
@@ -352,6 +414,10 @@ header nav ul li a:hover {
     color: #ccc;
     margin-top: 10px; /* 見出しの下に少し余白を追加 */
   }
+
+
+
+  
   
   /* 会社情報 */
   .company-info {
@@ -412,10 +478,46 @@ header nav ul li a:hover {
     color: #ccc;
     font-size: 1.2rem;
     line-height: 1.6;
-    font-family: "Dela Gothic One", serif;
-    font-weight: 10;
+    font-family: "BIZ UDPGothic", sans-serif;
+    font-weight: 400;
     font-style: normal;
   }
+
+  .missionContent {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .missionTex {
+    flex: 1;
+  }
+  
+  .photo {
+    flex-shrink: 0;
+    margin-left: 20px;
+  }
+  
+  .photo img {
+    width: 200px;
+    height: auto;
+    border-radius: 50%;
+  }
+  
+  @media (max-width: 768px) {
+    .missionContent {
+      flex-direction: column-reverse; /* 写真がテキストの上に来る */
+      align-items: center;
+    }
+  
+    .photo {
+      margin-left: 0;
+      margin-top: 20px;
+    }
+  }
+
+
+
   
   /* 社内文化 */
   .culture {
@@ -439,13 +541,43 @@ header nav ul li a:hover {
     color: #ccc;
     font-size: 1.2rem;
     line-height: 1.6;
-    font-family: "Dela Gothic One", serif;
-    font-weight: 100;
+    font-family: "BIZ UDPGothic", sans-serif;
+    font-weight: 400;
     font-style: normal;
   }
   
-  /* レスポンシブデザイン */
+
+  .culture-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .culture-image {
+    width: 50%;
+    padding-right: 20px;
+  }
+
+  .culture-image img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+
+  .culture-text {
+    width: 50%;
+  }
+
   @media (max-width: 768px) {
+    .culture-container {
+      flex-direction: column;
+    }
+
+    .culture-image, .culture-text {
+      width: 100%;
+      padding: 0;
+    }
+
     .company-info {
       grid-template-columns: 1fr;
     }
@@ -604,6 +736,19 @@ h3 {
     color: #fff;
     padding: 40px 0;
   }
+
+  /* ヘッダー画像 */
+.header-image {
+  width: 100%;
+  height: auto; /* 高さを固定 */
+  overflow: hidden; /* 画像が親コンテナからはみ出さないように */
+}
+
+.contact-header-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* 画像が親の枠に合うようにクロッピング */
+}
   
   .contact-page .container {
     max-width: 800px;
@@ -686,9 +831,6 @@ h3 {
 
   /* お問い合わせレスポンシブ */
 
-
-  /* 既存のスタイルの後に追加 */
-
 .contact-form input,
 .contact-form textarea {
   width: 100%; /* 幅を100%に設定 */
@@ -743,6 +885,15 @@ h3 {
   }
 }
 
+
+@media screen and (max-width: 600px) {
+  .contact-header-img {
+    object-position: center; /* 画像の中央部分を表示 */
+  }
+  .form-group {
+    margin-bottom: 12px;
+  }
+}
 
 
 

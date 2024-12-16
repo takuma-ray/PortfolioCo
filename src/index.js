@@ -35,7 +35,9 @@ const App = () => {
     <Router>
       <header>
         <div className="hContainer">
-          <h1>ポートフォリオ株式会社</h1>
+        <h1>
+          <Link to="/">ポートフォリオ株式会社</Link>
+        </h1>
           {isMobile && (
             <button className="hamburger" onClick={toggleMenu}>
               <span></span>
@@ -60,17 +62,18 @@ const App = () => {
           <div className={`mobileOverlay ${menuOpen ? "show" : ""}`} onClick={closeMenu}></div>
         )}
 
-        {isMobile && (
-          <nav className={`mobileMenu ${menuOpen ? "open" : ""}`} onClick={closeMenu}>
-            <ul onClick={(e) => e.stopPropagation()} className="mobileMenuList">
-              <li><Link to="/">ホーム</Link></li>
-              <li><Link to="/services">サービス</Link></li>
-              <li><Link to="/about">会社概要</Link></li>
-              <li><Link to="/recruit">採用情報</Link></li>
-              <li><Link to="/contact">お問い合わせ</Link></li>
-            </ul>
-          </nav>
-        )}
+          {isMobile && (
+            <nav className={`mobileMenu ${menuOpen ? "open" : ""}`} onClick={closeMenu}>
+              <ul onClick={(e) => e.stopPropagation()} className="mobileMenuList">
+                <li><Link to="/" onClick={closeMenu}>ホーム</Link></li>
+                <li><Link to="/services" onClick={closeMenu}>サービス</Link></li>
+                <li><Link to="/about" onClick={closeMenu}>会社概要</Link></li>
+                <li><Link to="/recruit" onClick={closeMenu}>採用情報</Link></li>
+                <li><Link to="/contact" onClick={closeMenu}>お問い合わせ</Link></li>
+              </ul>
+            </nav>
+          )}
+
       </header>
 
       <main>

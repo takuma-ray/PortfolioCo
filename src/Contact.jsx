@@ -39,6 +39,15 @@ const Contact = () => {
   return (
     <div className="contact-page">
       <div className="container">
+        {/* 画像セクション */}
+        <div className="header-image">
+          <img
+            src="/img/1920600.png"  // ここに画像のURLを挿入
+            alt="お問い合わせ"
+            className="contact-header-img"
+          />
+        </div>
+
         <h2>お問い合わせ</h2>
         <p>ゲーム開発に関するお問い合わせ、ご質問は以下のフォームからご連絡ください。</p>
 
