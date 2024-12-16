@@ -292,6 +292,7 @@ header nav ul li a:hover {
     max-width: 300px;
     transition: transform 0.3s, box-shadow 0.3s;
   }
+
   
   .services__item:hover {
     transform: translateY(-10px);
