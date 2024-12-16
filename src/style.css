@@ -1,0 +1,761 @@
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+      sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f9f9f9;
+  }
+  
+  code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+      monospace;
+  }
+  
+  /* 他の必要なスタイルがここに続く */
+  
+
+  /* ハンバーガーメニュー */
+  /* ハンバーガーメニュー用スタイル */
+
+.mobileMenuList {
+  display: flex;
+  flex-direction: column; /* 横並びから縦並びに変更 */
+  padding: 0;
+  margin: 0;
+}
+
+.mobileMenuList li {
+  margin: 15px 0; /* リスト項目間のスペース */
+  list-style: none;
+}
+
+.mobileMenuList a {
+  color: #00b4ff;
+}
+
+.mobileOverlay.show {
+  display: block; /* モーダルオーバーレイが表示されるとき */
+}
+
+.mobileMenu {
+  display: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.85);
+  z-index: 1000;
+  overflow-y: auto;
+  justify-content: center;
+  align-items: center;
+}
+
+.mobileMenu.open {
+  display: flex;
+}
+
+.hamburger {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.hamburger span {
+  width: 25px;
+  height: 3px;
+  background-color: #474747;
+}
+
+.hContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: #e0e0e0;
+}
+
+
+
+
+
+/* ヘッダー */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000; /* 最前面に表示 */
+    background-color: rgb(201, 192, 192); /* 背景色を設定（透明ではなく） */
+    border-bottom: 1px solid #866c6c; /* 下線で分割線を追加 */
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); /* 軽い影を追加 */
+    
+  }
+  
+  header .hContainer {
+    display: flex;
+    justify-content: space-between; /* 左右に要素を配置 */
+    align-items: center; /* 縦方向で中央揃え */
+    padding: 10px 20px;
+  }
+  
+  /* 下のコンテンツがヘッダーに隠れないように調整 */
+  main {
+    margin-top: 50px; /* ヘッダーの高さ分だけ余白を追加 */
+  }
+  
+
+header h1 {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+header nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+header nav ul li {
+    margin-left: 20px;
+}
+
+header nav ul li a {
+    color: #383434;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+}
+
+header nav ul li a:hover {
+    color: #ffa500;
+}
+
+
+
+/* topImgセクション */
+
+  /* topImgの基本スタイル */
+.topImg {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    opacity: 0; /* 初期状態で透明 */
+    transform: translateY(50px); /* 少し下から出てくるように */
+    transition: opacity 1s ease, transform 1s ease; /* フェードイン＆スライドイン */
+  }
+  
+
+  /* すでに記載した基本のCSSの後に追加 */
+  .fade-in {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+    transition: opacity 2s ease, transform 2s ease; /* ここでアニメーションの遅さを指定 */
+  }
+  
+  
+  
+  /* 画像の上に重ねるテキスト */
+  .topImg {
+    position: relative; /* テキストを画像の上に重ねるため */
+    width: 100%; /* 幅を画面全体に */
+    height: 100vh; /* 高さを画面全体に (Full HDに近い高さ) */
+    overflow: hidden; /* 不要なはみ出しを隠す */
+    object-position: center; /* 画像を中央に配置 */
+}
+
+.topImg img {
+    width: 100%; /* 横幅を画面全体にフィット */
+    height: 100%; /* 高さも画面全体にフィット */
+    object-fit: cover; /* アスペクト比を保ちながら画面を埋める */
+}
+
+.textOnImg {
+    position: absolute; /* 画像の上にテキストを配置する */
+    top: 50%; /* 縦中央 */
+    left: 50%; /* 横中央 */
+    transform: translate(-50%, -50%); /* 完全に中央揃え */
+    color: rgb(245, 11, 225); /* テキストの色を白に */
+    text-align: center; /* テキストを中央揃え */
+    text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.7); /* 背景が見やすいように影を付ける */
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
+}
+
+.textOnImg h1 {
+    font-size: 3rem; /* メインの見出しサイズ調整 */
+    margin: 0;
+    font-family: "Dela Gothic One", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.textOnImg p {
+    font-size: 1.5rem; /* サブテキストサイズ調整 */
+    margin-top: 1rem;
+    font-family: "Dela Gothic One", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+
+
+
+.heroWomanImg img {
+    width: 300px;
+    height: 300px;
+    object-fit: cover; /* 画像がボックス内で適切に収まるようにする */
+}
+  
+
+  
+/* ヒーローセクション */
+.hero {
+    color: #c42525;
+    text-align: center;
+    padding: 4rem 1rem;
+}
+
+.hero h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    margin: 0; /* h2とpタグのデフォルトのマージンをリセット */
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin: 0; /* h2とpタグのデフォルトのマージンをリセット */
+}
+
+
+
+
+
+
+/* サービス概要ページ */
+.services {
+    background: linear-gradient(to bottom, #1e1e2f, #141423);
+    color: #ffffff;
+    padding: 50px 20px;
+    font-family: 'Roboto', sans-serif;
+  }
+
+  .services__header img {
+    display: block; /* ブロック要素として扱う */
+    width: 100%; /* 横幅を親要素に完全一致させる */
+    height: auto; /* 縦横比を維持する */
+    margin: 0; /* 外側の余白をリセット */
+    object-fit: cover; /* 必要に応じて画像を切り取ってフィット */
+  }
+  
+  
+  .services__header {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  
+  .services__header h2 {
+    font-size: 2.5rem;
+    color: #ffcc00;
+    text-shadow: 2px 2px 8px rgba(255, 204, 0, 0.6);
+  }
+  
+  .services__header p {
+    font-size: 1.2rem;
+    color: #b0b0b0;
+  }
+  
+  .services__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 30px;
+  }
+  
+  .services__item {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    flex: 1 1 300px;
+    max-width: 300px;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  
+  .services__item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 24px rgba(255, 255, 255, 0.2);
+  }
+  
+  .services__item img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 15px;
+  }
+  
+  .services__item h3 {
+    font-size: 1.5rem;
+    color: #ffffff;
+    margin-bottom: 10px;
+  }
+  
+  .services__item p {
+    font-size: 1rem;
+    color: #b0b0b0;
+    line-height: 1.5;
+  }
+  
+
+
+/* コンテナ */
+.container {
+    width: 90%;
+    margin: 0 auto;
+    max-width: 1200px;
+  }
+  
+  /* 会社概要セクション */
+  .about-section {
+    padding: 60px 0;
+    background: #1f1f1f;
+    margin-top: 50px;
+  }
+  
+  .section-header {
+    text-align: center;
+    margin-bottom: 60px;  /* セクションヘッダーとその下のコンテンツの間隔を増加 */
+  }
+  
+  .section-header h2 {
+    font-size: 3rem;
+    color: #00b5e2;
+    letter-spacing: 2px;
+    font-weight: bold;
+  }
+  
+  .section-header p {
+    font-size: 1.2rem;
+    color: #ccc;
+    margin-top: 10px; /* 見出しの下に少し余白を追加 */
+  }
+  
+  /* 会社情報 */
+  .company-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin-top: 60px; /* セクションとセクション間の余白を増加 */
+    margin-bottom: 60px; /* 次のセクションとの距離を広げる */
+  }
+  
+  .info-item {
+    background: #282828;
+    padding: 20px;
+    border-radius: 8px;
+  }
+  
+  .info-item h3 {
+    font-size: 1.5rem;
+    color: #00b5e2;
+    margin-bottom: 10px;
+    font-family: "BIZ UDPGothic", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+  .info-item p,
+  .info-item ul {
+    color: #d0d0d0;
+    font-size: 1.1rem;
+    font-family: "BIZ UDPGothic", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+  .info-item ul li {
+    margin-bottom: 8px;
+  }
+  
+  /* ミッション */
+  .mission {
+    background: #121212;
+    padding: 40px;
+    border-radius: 8px;
+    margin-top: 80px; /* ミッションセクションの上部に十分な余白 */
+  }
+  
+  .mission h3 {
+    color: #00b5e2;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    font-family: "Dela Gothic One", serif;
+    font-weight: 400;
+    font-style: normal;
+
+  }
+  
+  .mission p {
+    color: #ccc;
+    font-size: 1.2rem;
+    line-height: 1.6;
+    font-family: "Dela Gothic One", serif;
+    font-weight: 10;
+    font-style: normal;
+  }
+  
+  /* 社内文化 */
+  .culture {
+    padding: 40px;
+    background: #1f1f1f;
+    margin-top: 80px; /* 社内文化セクションの上部に余白を増加 */
+    border-radius: 8px;
+  }
+  
+  .culture h3 {
+    color: #00b5e2;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    font-family: "Dela Gothic One", serif;
+    font-weight: 10;
+    font-style: normal;
+
+  }
+  
+  .culture p {
+    color: #ccc;
+    font-size: 1.2rem;
+    line-height: 1.6;
+    font-family: "Dela Gothic One", serif;
+    font-weight: 100;
+    font-style: normal;
+  }
+  
+  /* レスポンシブデザイン */
+  @media (max-width: 768px) {
+    .company-info {
+      grid-template-columns: 1fr;
+    }
+  
+    .section-header h2 {
+      font-size: 2rem;
+    }
+  
+    .mission h3, .culture h3 {
+      font-size: 1.6rem;
+    }
+  }
+  
+  
+
+/* 採用情報ページ */
+
+.recruit-container {
+  width: 100%; /* コンテナの幅を全画面に広げる */
+  background-color: #141423; /* 背景色を適用 */
+  font-family: Arial, sans-serif;
+  padding: 3rem 2rem; /* 横幅が小さい画面でも余白を確保 */
+  box-sizing: border-box; /* パディングを幅に含める */
+}
+
+.recruit-content {
+  max-width: 1200px; /* コンテンツの最大幅 */
+  margin: 0 auto; /* コンテンツを中央寄せ */
+  display: flex; /* Flexboxを有効に */
+  flex-wrap: wrap; /* 折り返しを許可 */
+  gap: 2rem; /* 要素間の余白を設定 */
+  justify-content: space-between; /* 横並び要素を整列 */
+}
+
+.card {
+  flex: 1 1 calc(33.333% - 2rem); /* 3列表示用の計算 */
+  background-color: #ffffff; /* カード背景 */
+  color: #333333; /* テキストカラー */
+  padding: 1.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+
+
+/* Header Styling */
+.recruit-header h2 {
+  font-size: 2.5rem;
+  color: #f7f7f7;
+  text-align: center;
+}
+
+.recruit-header p {
+  font-size: 1.2rem;
+  color: #f7f7f7;
+  text-align: center;
+}
+
+.company-overview {
+  text-align: center; /* 中央揃え */
+}
+
+.company-overview h3 {
+  margin-bottom: 1rem; /* タイトル下の余白 */
+  color: #00b4ff; /* タイトルカラー（アクセント色として） */
+}
+
+.company-overview p {
+  line-height: 1.6; /* 行間の調整 */
+  color: #ffffff; /* テキストカラー（必要に応じて） */
+}
+
+
+/* Section Margins */
+.company-overview,
+.open-positions,
+.why-join,
+.employee-benefits,
+.how-to-apply {
+  margin-bottom: 3rem;
+}
+
+h3 {
+  font-size: 2rem;
+  color: #f7f7f7;
+  margin-bottom: 1rem;
+}
+
+/* Position List Styling */
+.position-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.position {
+  background-color: #f9f9f9;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.position h4 {
+  font-size: 1.5rem;
+  color: #333;
+}
+
+.position p {
+  font-size: 1.1rem;
+  color: #555;
+  margin: 1rem 0;
+}
+
+/* Button Styling */
+.apply-btn {
+  background-color: #4caf50;
+  color: white;
+  padding: 0.5rem 1.5rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.apply-btn:hover {
+  background-color: #45a049;
+}
+
+/* Why Join / Benefits List */
+.why-join ul,
+.employee-benefits ul {
+  list-style: none;
+  padding: 0;
+}
+
+.why-join li,
+.employee-benefits li {
+  margin: 0.5rem 0;
+  font-size: 1.1rem;
+  color: #f7f7f7;
+}
+
+/* How-to-Apply Section */
+.how-to-apply p {
+  font-size: 1.2rem;
+  color: #f7f7f7;
+}
+  
+
+
+
+/* お問い合わせページ */
+.contact-page {
+    background-color: #2a2a2a;
+    color: #fff;
+    padding: 40px 0;
+  }
+  
+  .contact-page .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .contact-page h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #ffcc00;
+  }
+  
+  .contact-page p {
+    font-size: 1.1rem;
+    line-height: 1.5;
+  }
+  
+  .contact-info,
+  .contact-form,
+  .social-media {
+    margin-top: 30px;
+  }
+  
+  .contact-info ul,
+  .social-media ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .contact-info li,
+  .social-media li {
+    margin-bottom: 10px;
+  }
+  
+  .contact-info strong {
+    color: #ffcc00;
+  }
+  
+  .contact-form .form-group {
+    margin-bottom: 20px;
+  }
+  
+  .contact-form input,
+  .contact-form textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    background-color: #333;
+    color: #fff;
+  }
+  
+  .contact-form button {
+    padding: 10px 20px;
+    font-size: 1.1rem;
+    background-color: #ffcc00;
+    color: #000;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .contact-form button:hover {
+    background-color: #ffd700;
+  }
+  
+  .social-media a {
+    color: #fff;
+    text-decoration: none;
+  }
+  
+  .social-media a:hover {
+    color: #ffcc00;
+  }
+
+  
+
+
+  /* お問い合わせレスポンシブ */
+
+
+  /* 既存のスタイルの後に追加 */
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%; /* 幅を100%に設定 */
+  padding: 10px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  background-color: #333;
+  color: #fff;
+  box-sizing: border-box; /* パディングとボーダーを含めて幅が収まるように調整 */
+}
+
+.contact-form .form-group {
+  margin-bottom: 20px;
+  max-width: 100%; /* フォーム要素が親コンテナを超えないように設定 */
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+  .contact-page h2 {
+    font-size: 1.5rem; /* タイトルのサイズを調整 */
+  }
+
+  .contact-form input,
+  .contact-form textarea {
+    font-size: 1rem; /* フォームの入力欄のフォントサイズ調整 */
+  }
+
+  .contact-form button {
+    font-size: 1rem; /* ボタンのフォントサイズ調整 */
+    padding: 8px 16px; /* ボタンのパディング調整 */
+  }
+
+  .social-media ul {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .social-media li {
+    margin-bottom: 15px;
+  }
+
+  .contact-info ul {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .contact-info li {
+    margin-bottom: 10px;
+  }
+}
+
+
+
+
+
+
+/* フッター */
+footer {
+    background: #333;
+    color: #fff;
+    text-align: center;
+    padding: 1rem 0;
+}
+
+footer p {
+    margin: 0;
+    font-size: 0.9rem;
+}
